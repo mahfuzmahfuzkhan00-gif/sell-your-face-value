@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The shirt from his last live show — Bidding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0b1322; --bg-panel:#121b2e; --bg-panel-raised:#182438;
+    --navy:#1a3a6e; --teal:#1d7a8c; --emerald:#2a9d6f;
+    --grad-brand: linear-gradient(115deg, #1c3f7a 0%, #1d7a8c 50%, #2aa06f 100%);
+    --ice:#eef3f8; --ice-dim:#9fb0c4; --line:rgba(159,176,196,0.16); --amber:#e0a23c;
+    --font-display:"Fraunces", serif; --font-body:"Inter", sans-serif; --font-mono:"JetBrains Mono", monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg-deep); color:var(--ice); font-family:var(--font-body); line-height:1.6;}
+  a{color:inherit; text-decoration:none;}
+
+  nav{position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:16px 6%; background:rgba(11,19,34,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .logo-mark{display:flex; align-items:center; gap:10px;}
+  .logo-mark img{height:30px;}
+  .logo-mark span{font-family:var(--font-display); font-size:1.25rem; font-weight:600;}
+  .logo-mark .accent{background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; color:transparent; font-style:italic;}
+  .nav-links{display:flex; gap:32px; font-size:0.92rem; color:var(--ice-dim);}
+  .nav-links a:hover{color:var(--ice);}
+  .nav-cta{background:var(--grad-brand); color:#fff; padding:10px 22px; border-radius:5px; font-weight:600; font-size:0.88rem;}
+
+  .breadcrumb{padding:24px 6% 0; font-size:0.84rem; color:var(--ice-dim);}
+  .breadcrumb a:hover{color:var(--ice);}
+
+  .item-layout{padding:30px 6% 80px; display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+
+  .item-photo-main{height:420px; border-radius:8px; background:linear-gradient(135deg,#16233b,#0b1322 75%); display:flex; align-items:center; justify-content:center; border:1px solid var(--line); margin-bottom:28px;}
+  .item-photo-label{font-size:0.8rem; color:var(--ice-dim); font-family:var(--font-mono);}
+
+  .story-box{background:var(--bg-panel); border:1px solid var(--line); border-radius:8px; padding:28px;}
+  .story-tag{font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--teal); background:rgba(29,122,140,0.12); display:inline-block; padding:4px 10px; border-radius:3px; margin-bottom:14px;}
+  .story-box h3{font-family:var(--font-display); font-size:1.08rem; margin-bottom:10px; font-weight:600;}
+  .story-box p{color:var(--ice-dim); font-size:0.92rem;}
+  .seller-row{display:flex; align-items:center; gap:12px; margin-top:22px; padding-top:20px; border-top:1px solid var(--line);}
+  .avatar{width:38px; height:38px; border-radius:50%; background:var(--bg-panel-raised); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:0.68rem; color:var(--ice-dim);}
+  .seller-name{font-size:0.87rem; font-weight:600;}
+  .seller-meta{font-size:0.75rem; color:var(--ice-dim);}
+
+  .item-title-main{font-family:var(--font-display); font-size:1.95rem; font-weight:600; margin-bottom:10px;}
+  .item-cat-pill{display:inline-block; font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; color:#7fd4b8; background:rgba(29,122,140,0.12); padding:5px 12px; border-radius:4px; margin-bottom:20px;}
+
+  .timer-box{background:rgba(224,162,60,0.10); border:1px solid rgba(224,162,60,0.35); border-radius:8px; padding:18px 22px; display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;}
+  .timer-label{font-size:0.77rem; color:var(--ice-dim);}
+  .timer-value{font-family:var(--font-mono); font-size:1.38rem; color:var(--amber); font-weight:600; letter-spacing:0.02em;}
+
+  .current-bid-box{background:var(--bg-panel); border:1px solid var(--line); border-radius:8px; padding:24px; margin-bottom:24px;}
+  .current-bid-label{font-size:0.77rem; color:var(--ice-dim); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:6px;}
+  .current-bid-amt{font-family:var(--font-mono); font-size:2.15rem; color:#7fd4b8; font-weight:700;}
+  .current-bid-sub{font-size:0.81rem; color:var(--ice-dim); margin-top:4px;}
+
+  .bid-form{display:flex; gap:10px; margin-bottom:30px;}
+  .bid-input{flex:1; background:var(--bg-panel); border:1px solid var(--line); border-radius:6px; padding:14px 16px; color:var(--ice); font-family:var(--font-mono); font-size:1rem;}
+  .bid-input:focus{outline:none; border-color:var(--teal);}
+  .btn-bid{background:var(--grad-brand); color:#fff; border:none; border-radius:6px; padding:14px 28px; font-weight:600; cursor:pointer; font-size:0.94rem; font-family:var(--font-body);}
+  .btn-bid:hover{filter:brightness(1.1);}
+
+  .bidders-section h3{font-family:var(--font-display); font-size:1.12rem; margin-bottom:16px; font-weight:600;}
+  .bidder-list{display:flex; flex-direction:column; gap:10px; margin-bottom:30px;}
+  .bidder-row{display:flex; align-items:center; justify-content:space-between; padding:13px 16px; background:var(--bg-panel); border:1px solid var(--line); border-radius:6px;}
+  .bidder-row.top{border-color:var(--teal); background:rgba(29,122,140,0.07);}
+  .bidder-left{display:flex; align-items:center; gap:12px;}
+  .bidder-rank{font-family:var(--font-mono); font-size:0.74rem; color:var(--ice-dim); width:18px;}
+  .bidder-info{display:flex; flex-direction:column;}
+  .bidder-name{font-size:0.89rem; font-weight:600;}
+  .bidder-time{font-size:0.71rem; color:var(--ice-dim);}
+  .bidder-amt{font-family:var(--font-mono); font-weight:600; color:#7fd4b8;}
+  .bidder-row.top .bidder-amt{font-size:1.04rem;}
+  .crown{color:var(--amber); margin-right:4px;}
+
+  .split-box{background:var(--bg-panel-raised); border:1px solid var(--line); border-radius:8px; padding:22px;}
+  .split-box h4{font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); margin-bottom:16px;}
+  .split-row{display:flex; justify-content:space-between; font-size:0.87rem; padding:8px 0; border-bottom:1px solid var(--line);}
+  .split-row:last-child{border-bottom:none; padding-top:12px; font-weight:600; color:#7fd4b8;}
+  .split-row span:first-child{color:var(--ice-dim);}
+
+  .how-bidding-works{margin-top:30px; padding:18px 20px; background:rgba(29,122,140,0.07); border:1px dashed var(--line); border-radius:8px; font-size:0.83rem; color:var(--ice-dim); line-height:1.8;}
+  .how-bidding-works b{color:#7fd4b8;}
+
+  footer{border-top:1px solid var(--line); padding:40px 6%; display:flex; justify-content:space-between; color:var(--ice-dim); font-size:0.84rem; flex-wrap:wrap; gap:20px;}
+
+  @media (max-width:980px){
+    .item-layout{grid-template-columns:1fr; gap:30px;}
+    .nav-links{display:none;}
+    .item-photo-main{height:280px;}
+  }
+  :focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-mark">
+    <img src="assets/logo.png" alt="logo">
+    <span>Sell Your Face <span class="accent">Value</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="listings.html">Browse items</a>
+    <a href="bidding.html">See a live bid</a>
+    <a href="index.html#campaigns">Campaigns</a>
+  </div>
+  <a href="#" class="nav-cta">Start selling</a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / <a href="listings.html">Browse items</a> / The shirt from his last live show
+</div>
+
+<div class="item-layout">
+
+  <div class="left-col">
+    <div class="item-photo-main"><span class="item-photo-label">[ item photos — multiple angles ]</span></div>
+    <div class="story-box">
+      <span class="story-tag">The real story</span>
+      <h3>What's behind this item</h3>
+      <p>In December 2019, the artist wore this shirt at his final live concert at Army Stadium, Dhaka. After the show, it passed through the backstage crew and eventually came to me. I kept it in my closet for five years, never once thinking of selling it. But I've realized something — this shirt means more sitting with a true fan who'll cherish it than sitting in my closet, unseen.</p>
+      <div class="seller-row">
+        <div class="avatar">RK</div>
+        <div>
+          <div class="seller-name">Rakib Hasan</div>
+          <div class="seller-meta">Verified seller · Dhaka · 3 successful sales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-col">
+    <h1 class="item-title-main">The shirt from his last live show</h1>
+    <span class="item-cat-pill">Story item</span>
+
+    <div class="timer-box">
+      <div>
+        <div class="timer-label">Bidding ends in</div>
+        <div class="timer-value" id="countdown">3d 12h 08m</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="timer-label">Total bidders</div>
+        <div class="timer-value" style="font-size:1.4rem;">17</div>
+      </div>
+    </div>
+
+    <div class="current-bid-box">
+      <div class="current-bid-label">Current top bid</div>
+      <div class="current-bid-amt">$340</div>
+      <div class="current-bid-sub">Next minimum bid: starting from $352</div>
+    </div>
+
+    <form class="bid-form" onsubmit="return false;">
+      <input type="number" class="bid-input" placeholder="Enter your bid amount ($)" min="352">
+      <button class="btn-bid" type="submit">Place bid</button>
+    </form>
+
+    <div class="bidders-section">
+      <h3>Bidders</h3>
+      <div class="bidder-list">
+        <div class="bidder-row top">
+          <div class="bidder-left">
+            <span class="bidder-rank">1</span>
+            <div class="avatar">SA</div>
+            <div class="bidder-info">
+              <div class="bidder-name"><span class="crown">👑</span>Sadia Akter</div>
+              <div class="bidder-time">Bid 2 hours ago</div>
+            </div>
+          </div>
+          <div class="bidder-amt">$340</div>
+        </div>
+        <div class="bidder-row">
+          <div class="bidder-left">
+            <span class="bidder-rank">2</span>
+            <div class="avatar">MH</div>
+            <div class="bidder-info">
+              <div class="bidder-name">Mahfuz Hossain</div>
+              <div class="bidder-time">Bid 5 hours ago</div>
+            </div>
+          </div>
+          <div class="bidder-amt">$312</div>
+        </div>
+        <div class="bidder-row">
+          <div class="bidder-left">
+            <span class="bidder-rank">3</span>
+            <div class="avatar">TI</div>
+            <div class="bidder-info">
+              <div class="bidder-name">Tanvir Islam</div>
+              <div class="bidder-time">Bid 1 day ago</div>
+            </div>
+          </div>
+          <div class="bidder-amt">$284</div>
+        </div>
+        <div class="bidder-row">
+          <div class="bidder-left">
+            <span class="bidder-rank">4</span>
+            <div class="avatar">NJ</div>
+            <div class="bidder-info">
+              <div class="bidder-name">Nusrat Jahan</div>
+              <div class="bidder-time">Bid 2 days ago</div>
+            </div>
+          </div>
+          <div class="bidder-amt">$240</div>
+        </div>
+      </div>
+
+      <div class="how-bidding-works">
+        <b>How bidding works:</b> the top bidder gets 7 days to complete the purchase. If the top bidder (Sadia Akter) doesn't buy within that window, the opportunity automatically passes to the 2nd highest bidder (Mahfuz Hossain). If they also don't buy, it moves to the 3rd — and so on.
+      </div>
+    </div>
+
+    <div class="split-box" style="margin-top:26px;">
+      <h4>If this sells at $340, here's where it goes</h4>
+      <div class="split-row"><span>Seller (Rakib Hasan) receives</span><span>$204 (60%)</span></div>
+      <div class="split-row"><span>Charity fund receives</span><span>$68 (20%)</span></div>
+      <div class="split-row"><span>Platform fee</span><span>$68 (20%)</span></div>
+      <div class="split-row"><span>Total</span><span>$340</span></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="logo-mark"><img src="assets/logo.png" alt="logo" style="height:22px;"><span style="font-size:1.05rem;">Sell Your Face <span class="accent">Value</span></span></a>
+  <div>Demo prototype — all data shown is illustrative</div>
+</footer>
+
+</body>
+</html>
